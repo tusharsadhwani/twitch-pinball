@@ -1,0 +1,14 @@
+DropGame:
+  ✔ Generate random starting location @done(20-09-16 19:38)
+  ✔ Gotta go fast @done(20-09-16 19:40)
+  ✔ Edge collision @done(20-09-15 20:51)
+  ✔ Friction @done(20-09-16 20:47)
+  ☐ API integration
+  ☐ Allow dropping any emote
+  ☐ Allow dropping themselves
+  ☐ Target?
+  ☐ Scoring
+
+  Backend:
+    ☐ !score
+    ☐ Get !drop commands from twitch
