@@ -3,11 +3,14 @@ DropGame:
   ✔ Gotta go fast @done(20-09-16 19:40)
   ✔ Edge collision @done(20-09-15 20:51)
   ✔ Friction @done(20-09-16 20:47)
+  ☐ Add target-style background, which scores in % distance from center
+  ☐ Add colors and animations
+    ☐ Rotations while it's moving
+    ☐ Rotate really fast while shrinking at the end
+    ☐ Grow and in the score while emote shrinks and fades
   ☐ API integration
   ☐ Allow dropping any emote
   ☐ Allow dropping themselves
-  ☐ Target?
-  ☐ Scoring
 
   Backend:
     ☐ !score
