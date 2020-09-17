@@ -1,5 +1,13 @@
 const emote = document.querySelector("#emote");
 const filter = document.querySelector("#filter");
+const colors = [
+  "rebeccapurple",
+  "blue",
+  "orange",
+  "palevioletred",
+  "green",
+  "red",
+];
 
 let startX;
 let startY;
@@ -26,10 +34,14 @@ const dropSetup = () => {
   xdir = Math.random() + 0.5;
   ydir = Math.random() + 0.5;
 
-  filter.setAttribute("flood-color", "blue");
+  const randomColorIndex = Math.floor(Math.random() * colors.length);
+  const randomColor = colors[randomColorIndex];
+  filter.setAttribute("flood-color", randomColor);
 };
 
 const dropLoop = () => {
+  emote.style.display = "block";
+
   let left = parseInt(emote.style.left) || 0;
   let top = parseInt(emote.style.top) || 0;
 
