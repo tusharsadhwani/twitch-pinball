@@ -6,8 +6,8 @@ const startSpeed = 400 + Math.floor(100 * Math.random());
 const mu = 0.02; // Friction amount (between 0 and 1)
 
 let speed = startSpeed;
-let xdir = 1;
-let ydir = 1;
+let xdir = Math.random() + 0.5;
+let ydir = Math.random() + 0.5;
 
 const dropLoop = () => {
   let left = parseInt(emote.style.left) || 0;
