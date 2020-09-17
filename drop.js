@@ -5,6 +5,9 @@ emote.style.left = `${randomStartinLocation}px`;
 const startSpeed = 400 + Math.floor(100 * Math.random());
 const mu = 0.02; // Friction amount (between 0 and 1)
 
+const size = 40 + 100 * Math.random();
+document.documentElement.style.setProperty("--size", `${size}px`);
+
 let speed = startSpeed;
 let xdir = Math.random() + 0.5;
 let ydir = Math.random() + 0.5;

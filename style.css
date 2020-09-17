@@ -1,4 +1,9 @@
+:root {
+  --size: 80px;
+}
+
 .emote {
   position: fixed;
-  height: 40px;
+  width: var(--size);
+  height: var(--size);
 }
