@@ -28,22 +28,18 @@ const checkCollision = () => {
 
   if (xdir > 0 && left + emote.clientWidth >= window.innerWidth) {
     xdir *= -1;
-  }
-  if (xdir < 0 && left <= 0) {
+  } else if (xdir < 0 && left <= 0) {
     xdir *= -1;
   }
   if (ydir > 0 && top + emote.clientHeight >= window.innerHeight) {
     ydir *= -1;
-  }
-  if (ydir < 0 && top < 0) {
+  } else if (ydir < 0 && top < 0) {
     ydir *= -1;
   }
 };
 
 const applyFriction = () => {
-  if (Math.abs(speed) <= 50)
-    speed = Math.floor(Math.abs(speed) - 1) * (speed / Math.abs(speed));
-  else speed = Math.floor(speed * (1 - mu));
+  speed = Math.floor(speed * (1 - mu));
 };
 
 dropLoop();
