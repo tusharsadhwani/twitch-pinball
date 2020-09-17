@@ -2,7 +2,7 @@
   --size: 80px;
 }
 
-.emote {
+#emote {
   position: fixed;
   width: var(--size);
   height: var(--size);

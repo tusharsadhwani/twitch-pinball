@@ -1,16 +1,33 @@
-const emote = document.querySelector(".emote");
-const randomStartinLocation = Math.random() * window.innerWidth;
-emote.style.left = `${randomStartinLocation}px`;
+const emote = document.querySelector("#emote");
+const filter = document.querySelector("#filter");
 
-const startSpeed = 400 + Math.floor(100 * Math.random());
-const mu = 0.02; // Friction amount (between 0 and 1)
+let startX;
+let startY;
 
-const size = 40 + 100 * Math.random();
-document.documentElement.style.setProperty("--size", `${size}px`);
+let startSpeed;
+let mu; // Friction amount (between 0 and 1)
 
 let speed = startSpeed;
-let xdir = Math.random() + 0.5;
-let ydir = Math.random() + 0.5;
+let xdir, ydir;
+
+const dropSetup = () => {
+  startX = Math.random() * window.innerWidth;
+  startY = Math.random() * window.innerHeight;
+  emote.style.left = `${startX}px`;
+  emote.style.top = `${startY}px`;
+
+  startSpeed = 400 + Math.floor(100 * Math.random());
+  mu = 0.02; // Friction amount (between 0 and 1)
+
+  size = 40 + 100 * Math.random();
+  document.documentElement.style.setProperty("--size", `${size}px`);
+
+  speed = startSpeed;
+  xdir = Math.random() + 0.5;
+  ydir = Math.random() + 0.5;
+
+  filter.setAttribute("flood-color", "blue");
+};
 
 const dropLoop = () => {
   let left = parseInt(emote.style.left) || 0;
@@ -22,7 +39,9 @@ const dropLoop = () => {
   checkCollision();
   applyFriction();
 
-  requestAnimationFrame(dropLoop);
+  if (speed === 0) {
+    emote.style.display = "none";
+  } else requestAnimationFrame(dropLoop);
 };
 
 const checkCollision = () => {
@@ -45,4 +64,7 @@ const applyFriction = () => {
   speed = Math.floor(speed * (1 - mu));
 };
 
-dropLoop();
+document.documentElement.addEventListener("mousedown", (ev) => {
+  dropSetup();
+  dropLoop();
+});

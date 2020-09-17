@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="emote">
+    <div id="emote">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -16,7 +16,7 @@
       >
         <defs>
           <filter id="colorMask3">
-            <feFlood flood-color="#ff4747" result="flood" />
+            <feFlood id="filter" flood-color="#ff4747" result="flood" />
             <feComposite
               in="SourceGraphic"
               in2="flood"
