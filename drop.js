@@ -76,7 +76,17 @@ const applyFriction = () => {
   speed = Math.floor(speed * (1 - mu));
 };
 
-document.documentElement.addEventListener("mousedown", (ev) => {
-  dropSetup();
-  dropLoop();
-});
+lastDropId = -1;
+const checkDrops = async () => {
+  console.log("bruh");
+  const response = await fetch("http://localhost:9879/drops");
+  const drop = await response.json();
+  if (drop.id != lastDropId) {
+    lastDropId = drop.id;
+    dropSetup();
+    dropLoop();
+  }
+  await checkDrops();
+};
+
+checkDrops();

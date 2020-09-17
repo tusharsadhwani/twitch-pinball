@@ -4,14 +4,14 @@ DropGame:
   ✔ Edge collision @done(20-09-15 20:51)
   ✔ Friction @done(20-09-16 20:47)
   ☐ Add target-style background, which scores in % distance from center
-  ☐ Add colors and animations
+  ✔ Add colors and animations @done(20-09-17 19:12)
     ☐ Rotations while it's moving
     ☐ Rotate really fast while shrinking at the end
     ☐ Grow and in the score while emote shrinks and fades
-  ☐ API integration
+  ✔ API integration @done(20-09-17 19:12)
   ☐ Allow dropping any emote
   ☐ Allow dropping themselves
 
   Backend:
     ☐ !score
-    ☐ Get !drop commands from twitch
+    ✔ Get !drop commands from twitch @done(20-09-17 19:12)
