@@ -73,7 +73,7 @@ const applyFriction = () => {
 lastDropId = -1;
 const checkDrops = async () => {
   try {
-    const response = await fetch("http://localhost:9879/drops");
+    const response = await fetch("http://159.69.127.163:9879/drops");
     const drop = await response.json();
     if (drop.id != lastDropId) {
       lastDropId = drop.id;
