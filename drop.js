@@ -1,13 +1,6 @@
 const emote = document.querySelector("#emote");
 const filter = document.querySelector("#filter");
-const colors = [
-  "rebeccapurple",
-  "blue",
-  "orange",
-  "palevioletred",
-  "green",
-  "red",
-];
+const colors = ["red", "blue", "orange", "palevioletred", "green", "#873bd3"];
 
 let startX;
 let startY;
@@ -89,4 +82,11 @@ const checkDrops = async () => {
   await checkDrops();
 };
 
-checkDrops();
+checkDrops().catch((er) => {
+  const p = document.createElement("p");
+  p.style.position = "fixed";
+  p.style.bottom = "20%";
+  p.style.zIndex = 2;
+  p.innerText = er;
+  document.body.appendChild(p);
+});
