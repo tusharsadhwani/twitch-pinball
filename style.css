@@ -1,9 +1,17 @@
 :root {
   --size: 80px;
+  font-family: sans-serif;
 }
 
 #emote {
   position: fixed;
   width: var(--size);
   height: var(--size);
+}
+
+#error {
+  position: fixed;
+  bottom: 20%;
+  color: red;
+  font-size: 22px;
 }

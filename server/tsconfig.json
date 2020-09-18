@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "strict": true,
-    "watch": true,
     "target": "ES5",
     "esModuleInterop": true
   }

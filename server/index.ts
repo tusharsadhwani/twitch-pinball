@@ -23,7 +23,7 @@ const dropData = { id: -1 };
 client.on("message", (channel, tags, message, self) => {
   if (self) return;
 
-  if (message.toLowerCase() === "!drop") {
+  if (message.toLowerCase().startsWith("!drop")) {
     client.say(channel, `dropping @${tags.username}`);
     dropData.id++;
   }

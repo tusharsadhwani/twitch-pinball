@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc-watch --onSuccess \"node .\""
+    "start": "tsc --outDir build && node ./build",
+    "dev": "tsc-watch --onSuccess \"node .\""
   },
   "author": "",
   "license": "ISC",

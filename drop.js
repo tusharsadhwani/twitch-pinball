@@ -1,4 +1,5 @@
 const emote = document.querySelector("#emote");
+const error = document.querySelector("#error");
 const filter = document.querySelector("#filter");
 const colors = ["red", "blue", "orange", "palevioletred", "green", "#873bd3"];
 
@@ -71,22 +72,19 @@ const applyFriction = () => {
 
 lastDropId = -1;
 const checkDrops = async () => {
-  console.log("bruh");
-  const response = await fetch("http://localhost:9879/drops");
-  const drop = await response.json();
-  if (drop.id != lastDropId) {
-    lastDropId = drop.id;
-    dropSetup();
-    dropLoop();
+  try {
+    const response = await fetch("http://localhost:9879/drops");
+    const drop = await response.json();
+    if (drop.id != lastDropId) {
+      lastDropId = drop.id;
+      dropSetup();
+      dropLoop();
+    }
+    error.innerText = "";
+  } catch (er) {
+    error.innerText = er;
   }
   await checkDrops();
 };
 
-checkDrops().catch((er) => {
-  const p = document.createElement("p");
-  p.style.position = "fixed";
-  p.style.bottom = "20%";
-  p.style.zIndex = 2;
-  p.innerText = er;
-  document.body.appendChild(p);
-});
+checkDrops();
