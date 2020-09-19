@@ -79,7 +79,7 @@ const checkDrops = async () => {
   if (!dropping)
     try {
       const response = await fetch(
-        `http://localhost:9879/drops?last=${lastDropId}`
+        `http://159.69.127.163:9879/drops?last=${lastDropId}`
       );
       const drop = await response.json();
       if (drop.id != lastDropId) {
