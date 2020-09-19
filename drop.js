@@ -12,7 +12,12 @@ let mu; // Friction amount (between 0 and 1)
 let speed = startSpeed;
 let xdir, ydir;
 
+let dropping = false;
+
 const dropSetup = () => {
+  dropping = true;
+  emote.style.display = "block";
+
   startX = Math.random() * window.innerWidth;
   startY = Math.random() * window.innerHeight;
   emote.style.left = `${startX}px`;
@@ -34,8 +39,6 @@ const dropSetup = () => {
 };
 
 const dropLoop = () => {
-  emote.style.display = "block";
-
   let left = parseInt(emote.style.left) || 0;
   let top = parseInt(emote.style.top) || 0;
 
@@ -46,6 +49,7 @@ const dropLoop = () => {
   applyFriction();
 
   if (speed === 0) {
+    dropping = false;
     emote.style.display = "none";
   } else requestAnimationFrame(dropLoop);
 };
@@ -72,19 +76,21 @@ const applyFriction = () => {
 
 lastDropId = -1;
 const checkDrops = async () => {
-  try {
-    const response = await fetch("http://159.69.127.163:9879/drops");
-    const drop = await response.json();
-    if (drop.id != lastDropId) {
-      lastDropId = drop.id;
-      dropSetup();
-      dropLoop();
+  console.log("bruh");
+  if (!dropping)
+    try {
+      const response = await fetch("http://159.69.127.163:9879/drops");
+      const drop = await response.json();
+      if (drop.id != lastDropId) {
+        lastDropId = drop.id;
+        dropSetup();
+        dropLoop();
+      }
+      error.innerText = "";
+    } catch (er) {
+      error.innerText = er;
     }
-    error.innerText = "";
-  } catch (er) {
-    error.innerText = er;
-  }
-  await checkDrops();
+  requestAnimationFrame(checkDrops);
 };
 
 checkDrops();
