@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 :root {
   --size: 80px;
   --color: white;
@@ -7,6 +9,14 @@
 #emote {
   transform: scale(0);
   position: fixed;
+  display: flex;
+  align-items: center;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 32px;
+  color: white;
+  text-shadow: 3px 3px #000, -3px 3px #000, 3px -3px #000, -3px -3px #000;
+}
+#emote svg {
   width: var(--size);
   height: var(--size);
 }
