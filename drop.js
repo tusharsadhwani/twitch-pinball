@@ -30,7 +30,7 @@ const dropSetup = () => {
 
   const randomColorIndex = Math.floor(Math.random() * colors.length);
   const randomColor = colors[randomColorIndex];
-  filter.setAttribute("flood-color", randomColor);
+  document.documentElement.style.setProperty("--color", randomColor);
 };
 
 const dropLoop = () => {

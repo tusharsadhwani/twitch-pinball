@@ -1,12 +1,17 @@
 :root {
   --size: 80px;
+  --color: white;
   font-family: sans-serif;
 }
 
 #emote {
+  display: none;
   position: fixed;
   width: var(--size);
   height: var(--size);
+}
+#filter {
+  flood-color: var(--color);
 }
 
 #error {
