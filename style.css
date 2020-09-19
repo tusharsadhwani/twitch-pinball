@@ -5,7 +5,7 @@
 }
 
 #emote {
-  display: none;
+  transform: scale(0);
   position: fixed;
   width: var(--size);
   height: var(--size);
@@ -19,4 +19,21 @@
   bottom: 20%;
   color: red;
   font-size: 22px;
+}
+
+#emote.visible {
+  transform: scale(1);
+}
+#emote.fading {
+  animation: nananananana;
+  animation-duration: 1s;
+}
+
+@keyframes nananananana {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(1800deg) scale(0);
+  }
 }

@@ -5,8 +5,8 @@ DropGame:
   ✔ Friction @done(20-09-16 20:47)
   ☐ Add target-style background, which scores in % distance from center
   ✔ Add colors and animations @done(20-09-17 19:12)
-    ☐ Rotations while it's moving
-    ☐ Rotate really fast while shrinking at the end
+    ✘ Rotations while it's moving @cancelled(20-09-19 17:22)
+    ✔ Rotate really fast while shrinking at the end @done(20-09-19 17:40)
     ☐ Grow and in the score while emote shrinks and fades
   ✔ API integration @done(20-09-17 19:12)
   ☐ Allow dropping any emote

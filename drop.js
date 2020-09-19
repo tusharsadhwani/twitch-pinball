@@ -1,7 +1,7 @@
 const emote = document.querySelector("#emote");
 const error = document.querySelector("#error");
 const filter = document.querySelector("#filter");
-const colors = ["red", "blue", "orange", "palevioletred", "green", "#873bd3"];
+const colors = ["red", "#00b7ff", "orange", "#ff5990", "#00ff00;", "#873bd3"];
 
 let startX;
 let startY;
@@ -13,10 +13,12 @@ let speed = startSpeed;
 let xdir, ydir;
 
 let dropping = false;
+let frameCounter = 0;
 
 const dropSetup = () => {
   dropping = true;
-  emote.style.display = "block";
+  emote.classList.add("visible");
+  emote.classList.remove("fading");
 
   startX = Math.random() * window.innerWidth;
   startY = Math.random() * window.innerHeight;
@@ -32,25 +34,30 @@ const dropSetup = () => {
   speed = startSpeed;
   xdir = Math.random() + 0.5;
   ydir = Math.random() + 0.5;
-
-  const randomColorIndex = Math.floor(Math.random() * colors.length);
-  const randomColor = colors[randomColorIndex];
-  document.documentElement.style.setProperty("--color", randomColor);
 };
 
 const dropLoop = () => {
+  frameCounter++;
+
   let left = parseInt(emote.style.left) || 0;
   let top = parseInt(emote.style.top) || 0;
 
   emote.style.left = `${left + speed * xdir}px`;
   emote.style.top = `${top + speed * ydir}px`;
 
+  if (frameCounter % 5 === 0) {
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
+    const randomColor = colors[randomColorIndex];
+    document.documentElement.style.setProperty("--color", randomColor);
+  }
+
   checkCollision();
   applyFriction();
 
   if (speed === 0) {
     dropping = false;
-    emote.style.display = "none";
+    emote.classList.add("fading");
+    emote.classList.remove("visible");
   } else requestAnimationFrame(dropLoop);
 };
 
