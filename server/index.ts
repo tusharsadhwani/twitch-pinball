@@ -18,14 +18,20 @@ const client = Client({
 
 client.connect();
 
-const dropData = { id: -1 };
+let lastDrop = { id: 0 };
+let lastQueryId = 0;
+const dropQueue: { id: number }[] = [];
 
 client.on("message", (channel, tags, message, self) => {
   if (self) return;
 
   if (message.toLowerCase().startsWith("!drop")) {
-    client.say(channel, `dropping @${tags.username}`);
-    dropData.id++;
+    const dropId = ++lastQueryId;
+    dropQueue.push({ id: dropId });
+    client.say(
+      channel,
+      `dropping @${tags.username} - #${dropId.toString().padStart(4, "0")}`
+    );
   }
 });
 
@@ -34,7 +40,15 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/drops", (req, res) => {
-  res.json(dropData);
+  const lastDropId = Number(req.query.last);
+
+  if (dropQueue.length > 0) {
+    if (dropQueue[0].id != lastDropId) {
+      lastDrop.id = dropQueue[0].id;
+      dropQueue.shift();
+    }
+  }
+  res.json(lastDrop);
 });
 
 app.listen(9879, () => console.log("Listening on port 9879"));

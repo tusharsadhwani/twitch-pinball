@@ -74,12 +74,13 @@ const applyFriction = () => {
   speed = Math.floor(speed * (1 - mu));
 };
 
-lastDropId = -1;
+let lastDropId = 0;
 const checkDrops = async () => {
-  console.log("bruh");
   if (!dropping)
     try {
-      const response = await fetch("http://159.69.127.163:9879/drops");
+      const response = await fetch(
+        `http://localhost:9879/drops?last=${lastDropId}`
+      );
       const drop = await response.json();
       if (drop.id != lastDropId) {
         lastDropId = drop.id;
@@ -92,5 +93,9 @@ const checkDrops = async () => {
     }
   requestAnimationFrame(checkDrops);
 };
+
+function sleep(ms) {
+  return;
+}
 
 checkDrops();
